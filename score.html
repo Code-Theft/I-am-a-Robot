@@ -255,38 +255,18 @@ input[type=text]:placeholder {
     
   </div>
 </nav>
-<div  id="imer">TIME LEFT : <p id="timer">10:00</p></div>
 
-<div class="container">
 
 	
 	
 	<div class="wrapper fadeInDown">
   <div id="formContent">
-    <!-- Tabs Titles -->
-	</form name="form"  target="_self"  >
-	<div style="padding-bottom:20px;">
-		<input type="text" id="nm" class="fadeIn second" name="entry.1928903205" placeholder="NAME">
-		<input type="text"  id="em" class="fadeIn second" name="entry.542453013"  placeholder="E-MAIL">
-	</div>	
-    <!-- Icon -->
-    <div class="fadeIn first">
-      <img src="assets/img/132.jfif" id="icon" alt="User Icon"  data-id="SUWEKB" />
-    </div>
-
-    <!-- Login Form -->
     
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Enter Captcha here">
-      
-	  
-		<input type="submit" class="fadeIn fourth"  value="SUBMIT" onclick="nextimg_val()">
-		<input type="submit" class="fadeIn fourth" value="SKIP"  onclick="nextimg()">
 		
-		<p>SCORE : </p><legend id="scr" >0</legend> 
-		<p>No of Wrong Answers : </p><legend  id="ngscr" >0</legend> 
-   
+		
+		
 	</form>
-
+	<input type="submit" class="fadeIn fourth" value="SAVE"  onclick="postToGoogle()">
     
 
   </div>
@@ -294,6 +274,32 @@ input[type=text]:placeholder {
 		
 	
 </div>	
+<script>
+document.getElementById("formContent").innerHTML ="YOU SCORED  : "+score;
+function postToGoogle() {
+                
+				
+
+				
+	
+                $.ajax({
+                    url: "https://docs.google.com/forms/d/e/1FAIpQLSeUVF2ZGWpmNKHwaKTeGL44QL1Nk9hnd4eyWh-Vg8CJ4JyjCQ/viewform?usp=sf_link",
+					data: {"entry.1928903205": name, "entry.542453013": mail, },
+                    type: "POST",
+                    dataType: "xml",
+                    success: function(d)
+					{
+					},
+					error: function(x, y, z)
+						{
+
+							$('#success-msg').show();
+							$('#form').hide();
+							
+						}
+                });
+				return false;
+            }
 
 
 	
@@ -301,14 +307,11 @@ input[type=text]:placeholder {
 
 
 
-
+</script>
 
 	
     <script src="assets/js/validate.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-   
+    
 	
 </body>
 
