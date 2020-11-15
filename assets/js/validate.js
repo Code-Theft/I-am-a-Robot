@@ -1,10 +1,9 @@
 var i=1;
 var score=0;
 var negscore=0;
-var name=document.getElementById("nm").value;
-var mail=document.getElementById("em").value;
 
-document.getElementById('timer').innerHTML = 000 + ":" + 15;
+
+document.getElementById('timer').innerHTML = 010 + ":" + 30;
 startTimer();
 function startTimer() {
   var presentTime = document.getElementById('timer').innerHTML;
@@ -14,8 +13,40 @@ function startTimer() {
   if(s==59){m=m-1}
   if(m<0)
   {
+	 
+	  //var total= score;
+	  //alert(total);
+	//window.location.replace("score.html");
+	 var name =document.getElementById("nm").value;
+ var mail=document.getElementById("em").value;
+	
+	document.getElementById("formContent").innerHTML ="<p>YOU SCORED  : "+score+"</p><form id='gform' method='POST'  action='https://script.google.com/macros/s/AKfycbxdeTrUUR23mSFHUPU-OmM2V-FGQWV2tRUMZvrT/exec'><label for='fname'> Name</label><input type='text' id='fname' name='name' placeholder='"+name+"'  readonly><br><label for='lname'>Email</label><input type='text' id='lname' name='email'  placeholder='"+mail+"' readonly><label for='total'>Score</label><input type='text' id='total' name='score' placeholder='"+score+"' readonly ><label for='totalin'>Incorrect</label><input type='text' id='totalneg' name='negscore' placeholder='"+negscore+"'  readonly ><input type='submit' value='Submit'></form>";
 
-	document.getElementById("formContent").innerHTML ="<p>YOU SCORED  : "+score+"</p></div><br><br><input type='submit' class='fadeIn fourth' value='SKIP'  onclick='return postToGoogle()'>";
+   document.getElementById("fname").value=name;
+document.getElementById("lname").value=mail;
+document.getElementById("total").value=score;
+document.getElementById("totalneg").value=negscore;
+	
+	
+	
+	$("#gform").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbxdeTrUUR23mSFHUPU-OmM2V-FGQWV2tRUMZvrT/exec",
+                data:$("#gform").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    
+                    window.location.replace("index.html")
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+
 	return;
 	
 	
@@ -75,6 +106,7 @@ function nextimg_val()
 	
 	document.getElementById("scr").innerHTML=score;
 	document.getElementById("ngscr").innerHTML=negscore;
+	
 	
 	
 	
