@@ -3,7 +3,7 @@ var score=0;
 var negscore=0;
 
 
-document.getElementById('timer').innerHTML = 012 + ":" + 30;
+document.getElementById('timer').innerHTML = 013 + ":" + 00;
 startTimer();
 function startTimer() {
   var presentTime = document.getElementById('timer').innerHTML;
