@@ -28,9 +28,18 @@ document.getElementById("totalneg").value=negscore;
                 data:$("#gform").serialize(),
                 method:"post",
                 success:function (response){
-                    alert("Form submitted successfully\n Redirecting To Google Form ")
+					if(score==10)
+					{
+						alert("Form submitted successfully\n Redirecting To Next Task")
                     
-                    window.location.replace("https://www.google.com/")    //PASTE your  google form Link here
+                    window.location.replace("https://forms.gle/wexVk3U1N7UMZJoe9")
+					}
+					else{
+						
+						
+                    alert("Form submitted successfully ")
+                    
+					}
                 },
                 error:function (err){
                     alert("Something Error")
